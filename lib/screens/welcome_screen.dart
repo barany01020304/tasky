@@ -69,6 +69,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 decoration: InputDecoration(
                   fillColor: Color(0XFF282828),
+                  filled: true,
                   hintText: "e.g. Sarah Khalid",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),

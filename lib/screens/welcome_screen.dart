@@ -53,19 +53,44 @@ class WelcomeScreen extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
-            SizedBox(height: 24,),
+            SizedBox(height: 24),
             SvgPicture.asset("assets/images/welcome_image.svg"),
-            SizedBox(height: 24,),
+            SizedBox(height: 28),
+            Align(
+              alignment:Alignment.centerLeft,
+              child: Text("Full Name",style: TextStyle(color: Color(0XFFFFFFFF),fontWeight: FontWeight.w400,fontSize: 16),),
+            ),
+            SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(
-                fixedSize: Size(double.maxFinite, 42),
-                backgroundColor: Color(0XFF15B86C),
-                foregroundColor: Color(0XFFFFFFFF)
-
+              child: TextField(
+                style: TextStyle(
+                  color: Color(0XFFFFFFFF)
+                ),
+                decoration: InputDecoration(
+                  fillColor: Color(0XFF282828),
+                  hintText: "e.g. Sarah Khalid",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: BorderSide.none,
+                  )
+                ),
               ),
-                  child: Text("Let’s Get Started")),
-            )
+            ),
+            SizedBox(height: 24),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(double.maxFinite, 42),
+                  backgroundColor: Color(0XFF15B86C),
+                  foregroundColor: Color(0XFFFFFFFF),
+                ),
+                child: Text("Let’s Get Started"),
+              ),
+            ),
           ],
         ),
       ),

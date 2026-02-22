@@ -12,16 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:DeviceFrame(
-        device: Devices.android.samsungGalaxyNote20Ultra, // 👈 iPhone device frame
+      home: DeviceFrame(
+        device: Devices.android.samsungGalaxyNote20Ultra,
+        // 👈 iPhone device frame
         screen: Builder(
           builder: (context) {
             return WelcomeScreen();
           },
         ),
       ),
-
     );
   }
 }
-

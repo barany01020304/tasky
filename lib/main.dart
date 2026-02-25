@@ -1,5 +1,6 @@
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
+import 'package:tasky/screens/home_screen.dart';
 import 'package:tasky/screens/welcome_screen.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         // 👈 iPhone device frame
         screen: Builder(
           builder: (context) {
-            return WelcomeScreen();
+            return HomeScreen();
           },
         ),
       ),

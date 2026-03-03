@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+   HomeScreen({super.key});
 
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String name ="default";
+  @override
+  void initState() {
+    getName();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,17 +36,17 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Spacer(flex: 1),
-                  const Column(
+                  Column(
                     children: [
                       Text(
-                        "Good Evening ,Usama ",
-                        style: TextStyle(
+                        "Good Evening ,$name ",
+                        style: const TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
                           color: Color(0XFFFFFCFC),
                         ),
                       ),
-                      Text(
+                      const Text(
                         "One task at a time.One step closer",
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -53,4 +66,13 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+  void getName()async{
+    final pref =await SharedPreferences.getInstance();
+   // setState(() {
+      name= pref.getString("name")??"mistake";
+   // });
+
+
+  }
+
 }

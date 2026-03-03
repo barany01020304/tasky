@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasky/screens/home_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({super.key});
-
+  final sharedPref =SharedPreferences.getInstance();
   final controller = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
@@ -103,8 +104,9 @@ class WelcomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (formKey.currentState!.validate()) {
+                        setTextInPref(controller.text, await sharedPref);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -127,5 +129,8 @@ class WelcomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+  void setTextInPref(String value ,SharedPreferences shared)async{
+    await shared.setString("name", value);
   }
 }

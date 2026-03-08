@@ -106,7 +106,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
-                        setTextInPref(controller.text, await sharedPref);
+                        setTextInPref(controller.text,  await sharedPref);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => HomeScreen()),

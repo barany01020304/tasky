@@ -5,7 +5,9 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasky/screens/home_screen.dart';
+import 'package:tasky/screens/main_screen.dart';
 import 'package:tasky/screens/welcome_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -14,12 +16,14 @@ void main() async {
 
   runApp(
     DevicePreview(
+      defaultDevice: Devices.android.samsungGalaxyNote20Ultra,
 
       enabled: true,
-      builder: (context) => MyApp(name: name,), // Your app
+      builder: (context) => MyApp(name: name), // Your app
     ),
   );
 }
+
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key, this.name});
 //
@@ -38,14 +42,19 @@ void main() async {
 // }
 class MyApp extends StatelessWidget {
   const MyApp({super.key, this.name});
+
   final String? name;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0XFF181818)
+      ),
       debugShowCheckedModeBanner: false,
       //useInheritedMediaQuery: true, // Important for DevicePreview
       builder: DevicePreview.appBuilder,
-      home:  name == null ? WelcomeScreen() : HomeScreen(),
+      home: name == null ? WelcomeScreen() : MainScreen(),
     );
   }
 }

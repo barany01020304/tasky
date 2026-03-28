@@ -3,16 +3,23 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasky/screens/home_screen.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
   final sharedPref =SharedPreferences.getInstance();
+
   final controller = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF181818),
       //  appBar: AppBar(backgroundColor: Color(0XFF181818)),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -130,6 +137,7 @@ class WelcomeScreen extends StatelessWidget {
       ),
     );
   }
+
   void setTextInPref(String value ,SharedPreferences shared)async{
     await shared.setString("name", value);
   }
